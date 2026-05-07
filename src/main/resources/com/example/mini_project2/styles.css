@@ -1,0 +1,61 @@
+#loginBtn {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+#loginBtn:hover {
+    -fx-background-color: rgba(93, 226, 210, 0.6);
+}
+#registerBtn {
+    -fx-background-color: #34dba1;
+    -fx-text-fill: white;
+}
+
+#registerBtn:hover {
+    -fx-background-color: rgba(121, 234, 194, 0.58);
+}
+#employeesBtn {
+    -fx-background-color: white;
+    -fx-text-fill: #3f5166;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#employeesBtn:hover {
+    -fx-background-color: rgba(83, 135, 163, 0.78);
+    -fx-text-fill: #ffffff;
+}
+#customersBtn {
+    -fx-background-color: white;
+    -fx-text-fill: #3f5166;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#customersBtn:hover {
+    -fx-background-color: rgba(83, 135, 163, 0.78);
+    -fx-text-fill: #ffffff;
+}
+#ordersBtn {
+    -fx-background-color: white;
+    -fx-text-fill: #3f5166;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#ordersBtn:hover {
+    -fx-background-color: rgba(83, 135, 163, 0.78);
+    -fx-text-fill: #ffffff;
+}
+
+#productsBtn {
+    -fx-background-color: white;
+    -fx-text-fill: #3f5166;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#productsBtn:hover {
+    -fx-background-color: rgba(83, 135, 163, 0.78);
+    -fx-text-fill: #ffffff;
+}
