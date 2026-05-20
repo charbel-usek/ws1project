@@ -2,7 +2,10 @@ package com.example.mini_project2.models;
 
 import java.time.LocalDate;
 
+// This class represents one shipping order
 public class Order {
+
+    // Variables that store order information
     private int id;
     private String source;
     private String destination;
@@ -10,9 +13,10 @@ public class Order {
     private double price;
     private String deliveryType;
     private LocalDate orderDate;
-    private int estimatedArrival; // in days
+    private int estimatedArrival; // delivery time in days
 
-    // constructor used from the controller (no id yet)
+    // Constructor used when creating a new order
+    // ID is not included because it will be generated automatically
     public Order(String source,
                  String destination,
                  double weight,
@@ -20,6 +24,8 @@ public class Order {
                  String deliveryType,
                  LocalDate orderDate,
                  int estimatedArrival) {
+
+        // Store the received values inside the object
         this.source = source;
         this.destination = destination;
         this.weight = weight;
@@ -29,35 +35,90 @@ public class Order {
         this.estimatedArrival = estimatedArrival;
     }
 
-    // optional full constructor
-    public Order(int id, String source, String destination, double weight, double price,
-                 String deliveryType, LocalDate orderDate, int estimatedArrival) {
-        this(source, destination, weight, price, deliveryType, orderDate, estimatedArrival);
+    // Full constructor including ID
+    // Usually used when editing/loading existing orders
+    public Order(int id,
+                 String source,
+                 String destination,
+                 double weight,
+                 double price,
+                 String deliveryType,
+                 LocalDate orderDate,
+                 int estimatedArrival) {
+
+        // Calls the first constructor to avoid repeating code
+        this(source, destination, weight, price,
+                deliveryType, orderDate, estimatedArrival);
+
+        // Set the ID
         this.id = id;
     }
 
-    // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // ===== Getters and Setters =====
+    // Getters return values
+    // Setters modify values
 
-    public String getSource() { return source; }
-    public void setSource(String source) { this.source = source; }
+    public int getId() {
+        return id;
+    }
 
-    public String getDestination() { return destination; }
-    public void setDestination(String destination) { this.destination = destination; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public double getWeight() { return weight; }
-    public void setWeight(double weight) { this.weight = weight; }
+    public String getSource() {
+        return source;
+    }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public void setSource(String source) {
+        this.source = source;
+    }
 
-    public String getDeliveryType() { return deliveryType; }
-    public void setDeliveryType(String deliveryType) { this.deliveryType = deliveryType; }
+    public String getDestination() {
+        return destination;
+    }
 
-    public LocalDate getOrderDate() { return orderDate; }
-    public void setOrderDate(LocalDate orderDate) { this.orderDate = orderDate; }
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
-    public int getEstimatedArrival() { return estimatedArrival; }
-    public void setEstimatedArrival(int estimatedArrival) { this.estimatedArrival = estimatedArrival;}
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDeliveryType() {
+        return deliveryType;
+    }
+
+    public void setDeliveryType(String deliveryType) {
+        this.deliveryType = deliveryType;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public int getEstimatedArrival() {
+        return estimatedArrival;
+    }
+
+    public void setEstimatedArrival(int estimatedArrival) {
+        this.estimatedArrival = estimatedArrival;
+    }
 }
