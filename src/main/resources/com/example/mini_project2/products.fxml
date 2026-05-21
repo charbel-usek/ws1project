@@ -1,56 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.mini_project2.controllers.ProductsController" prefWidth="900" prefHeight="600">
-    <left>
-        <VBox spacing="10">
+<HBox spacing="30.0" stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.mini_project2.controllers.ProductsController">
+
+    <children>
+
+        <!-- Left form panel -->
+        <VBox prefHeight="680.0" prefWidth="340.0" spacing="10.0" styleClass="left-panel">
+            <children>
+
+                <Label text="Products" styleClass="page-title" />
+
+                <GridPane hgap="8.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="130.0" />
+                        <ColumnConstraints prefWidth="180.0" />
+                    </columnConstraints>
+
+                    <children>
+
+                        <Label text="Name:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="nameField" promptText="Name" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Label text="Brand:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="brandField" promptText="Brand" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label text="Category:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="categoryBox" prefWidth="156.0" promptText="Category" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label text="Description:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="descField" promptText="Description" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <Label text="Quantity:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <TextField fx:id="quantityField" promptText="Quantity" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                        <Label text="Price:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <TextField fx:id="priceField" promptText="Price" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                        <Label text="Stock:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <TextField fx:id="stockField" promptText="Stock" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                        <Label fx:id="errorLabel" styleClass="error-label"
+                               GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+
+                    </children>
+
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+
+                <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
+                    <VBox.margin>
+                        <Insets left="60.0" />
+                    </VBox.margin>
+                </ImageView>
+
+                <Button text="Choose Image" onAction="#handleChooseImage" styleClass="btn-home" maxWidth="Infinity">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </VBox.margin>
+                </Button>
+
+                <HBox spacing="15.0" styleClass="btn-bar">
+                    <children>
+                        <Button onAction="#handleAdd" prefWidth="80.0" styleClass="btn-insert" text="Insert" />
+                        <Button onAction="#handleUpdate" prefWidth="80.0" styleClass="btn-update" text="Update" />
+                        <Button onAction="#handleDelete" prefWidth="80.0" styleClass="btn-delete" text="Delete" />
+                        <Button onAction="#goHome" prefWidth="80.0" styleClass="btn-home" text="Home" />
+                    </children>
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+
+            </children>
+
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
-
-            <Label text="Product Details" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
-            <TextField fx:id="nameField" promptText="Name" />
-            <TextField fx:id="brandField" promptText="Brand" />
-            <ComboBox fx:id="categoryBox" promptText="Category" />
-            <TextField fx:id="descField" promptText="Description" />
-            <TextField fx:id="quantityField" promptText="Quantity" />
-            <TextField fx:id="priceField" promptText="Price" />
-            <TextField fx:id="stockField" promptText="Stock" />
-            <Button text="Choose Image" onAction="#handleChooseImage" maxWidth="Infinity" />
-
-            <HBox spacing="10">
-                <Button text="Add" onAction="#handleAdd" />
-                <Button text="Update" onAction="#handleUpdate" />
-                <Button text="Delete" onAction="#handleDelete" />
-                <Button text="Home" onAction="#goHome" />
-            </HBox>
-
-            <Label fx:id="errorLabel" textFill="red" />
         </VBox>
-    </left>
 
-    <center>
-        <VBox alignment="CENTER" spacing="10">
-            <Label text="Product Image" />
-            <ImageView fx:id="imageView" fitHeight="250" fitWidth="250" preserveRatio="true" />
+        <!-- Right table panel -->
+        <VBox prefWidth="700.0" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox prefWidth="700.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <TableView fx:id="tableView" prefHeight="500.0" prefWidth="680.0" styleClass="entity-table">
+                            <columns>
+                                <TableColumn fx:id="nameCol" prefWidth="120.0" text="Name" />
+                                <TableColumn fx:id="brandCol" prefWidth="100.0" text="Brand" />
+                                <TableColumn fx:id="categoryCol" prefWidth="100.0" text="Category" />
+                                <TableColumn fx:id="quantityCol" prefWidth="60.0" text="Qty" />
+                                <TableColumn fx:id="priceCol" prefWidth="80.0" text="Price" />
+                                <TableColumn fx:id="stockCol" prefWidth="80.0" text="Stock" />
+                            </columns>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="0.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="0.0" right="10.0" top="10.0" />
+            </padding>
         </VBox>
-    </center>
 
-    <right>
-        <TableView fx:id="tableView" prefWidth="450">
-            <columns>
-                <TableColumn fx:id="nameCol" text="Name" prefWidth="120" />
-                <TableColumn fx:id="brandCol" text="Brand" prefWidth="100" />
-                <TableColumn fx:id="categoryCol" text="Category" prefWidth="100" />
-                <TableColumn fx:id="quantityCol" text="Qty" prefWidth="60" />
-                <TableColumn fx:id="priceCol" text="Price" prefWidth="80" />
-                <TableColumn fx:id="stockCol" text="Stock" prefWidth="80" />
-            </columns>
-        </TableView>
-    </right>
-</BorderPane>
+    </children>
+
+    <padding>
+        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+    </padding>
+</HBox>

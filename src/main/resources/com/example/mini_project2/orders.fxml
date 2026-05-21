@@ -1,83 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/23.0.1"
+<HBox spacing="30.0" stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.mini_project2.controllers.OrdersController"
-      spacing="15">
+      fx:controller="com.example.mini_project2.controllers.OrdersController">
 
-    <!-- Padding -->
+    <children>
+
+        <!-- Left form panel -->
+        <VBox prefHeight="572.0" prefWidth="380.0" spacing="10.0" styleClass="left-panel">
+            <children>
+
+                <Label text="Orders" styleClass="page-title" />
+
+                <GridPane hgap="8.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="130.0" />
+                        <ColumnConstraints prefWidth="210.0" />
+                    </columnConstraints>
+
+                    <children>
+
+                        <Label text="Source:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="sourceField" promptText="Source" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Label text="Destination:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="destinationField" promptText="Destination" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label text="Weight (kg):" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="weightField" promptText="Weight" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label text="Price ($):" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="priceField" promptText="Price" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <Label text="Delivery Type:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="deliveryTypeComboBox" prefWidth="156.0" promptText="Select type" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                        <Label text="Order Date:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <DatePicker fx:id="orderDatePicker" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                        <Label text="Est. Arrival (days):" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <HBox spacing="8.0" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <Slider fx:id="estimatedTimeSlider" blockIncrement="1.0" max="30.0" min="0.0" prefWidth="120.0" maxWidth="120.0" HBox.hgrow="NEVER" />
+                            <Label fx:id="estimatedTimeLabel" styleClass="form-label" text="0 days" />
+                        </HBox>
+
+                        <Label fx:id="errorLabel" styleClass="error-label"
+                               GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+
+                    </children>
+
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+
+                <HBox spacing="15.0" styleClass="btn-bar">
+                    <children>
+                        <Button onAction="#addOrder" prefWidth="80.0" styleClass="btn-insert" text="Insert" />
+                        <Button onAction="#updateOrder" prefWidth="80.0" styleClass="btn-update" text="Update" />
+                        <Button onAction="#deleteOrder" prefWidth="80.0" styleClass="btn-delete" text="Delete" />
+                        <Button onAction="#backToHome" prefWidth="80.0" styleClass="btn-home" text="Home" />
+                    </children>
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+
+            </children>
+
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+
+        <!-- Right table panel -->
+        <VBox prefWidth="900.0" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox prefWidth="900.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <TableView fx:id="orderTable" prefHeight="500.0" prefWidth="880.0" styleClass="entity-table">
+                            <columns>
+                                <TableColumn fx:id="idCol" prefWidth="50.0" text="ID" />
+                                <TableColumn fx:id="priceCol" prefWidth="110.0" text="Order Price ($)" />
+                                <TableColumn fx:id="sourceCol" prefWidth="120.0" text="Source" />
+                                <TableColumn fx:id="destinationCol" prefWidth="120.0" text="Destination" />
+                                <TableColumn fx:id="weightCol" prefWidth="100.0" text="Weight (kg)" />
+                                <TableColumn fx:id="deliveryTypeCol" prefWidth="130.0" text="Type of Delivery" />
+                                <TableColumn fx:id="orderDateCol" prefWidth="120.0" text="Order Date" />
+                                <TableColumn fx:id="estimatedArrivalCol" prefWidth="130.0" text="Estimated Arrival" />
+                            </columns>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="0.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="0.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+
+    </children>
+
     <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
+        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
     </padding>
-
-    <!-- Title -->
-    <Label text="Orders"
-           style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: black;"/>
-
-    <!-- Order Form -->
-    <GridPane hgap="10" vgap="8">
-        <columnConstraints>
-            <ColumnConstraints percentWidth="25"/>
-            <ColumnConstraints percentWidth="25"/>
-            <ColumnConstraints percentWidth="25"/>
-            <ColumnConstraints percentWidth="25"/>
-        </columnConstraints>
-
-        <!-- Row 1 -->
-        <Label text="Source:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="sourceField" promptText="Source" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-        <Label text="Destination:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-        <TextField fx:id="destinationField" promptText="Destination" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-
-        <!-- Row 2 -->
-        <Label text="Weight (kg):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <TextField fx:id="weightField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        <Label text="Order Price ($):" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-        <TextField fx:id="priceField" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-
-        <!-- Row 3 -->
-        <Label text="Type of Delivery:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <ComboBox fx:id="deliveryTypeComboBox" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-        <Label text="Order Date:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-        <DatePicker fx:id="orderDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
-
-        <!-- Row 4 -->
-        <Label text="Estimated Arrival (days):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <Slider fx:id="estimatedTimeSlider" min="0" max="30" blockIncrement="1" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-        <Label fx:id="estimatedTimeLabel" text="0 days" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
-
-        <!-- Row 5: Buttons -->
-        <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="4">
-            <Button text="Add" onAction="#addOrder" style="-fx-background-color: green; -fx-text-fill: white;"/>
-            <Button text="Update" onAction="#updateOrder" style="-fx-background-color: orange; -fx-text-fill: white;"/>
-            <Button text="Delete" onAction="#deleteOrder" style="-fx-background-color: red; -fx-text-fill: white;"/>
-            <Button text="Home" onAction="#backToHome" style="-fx-background-color: blue; -fx-text-fill: white;"/>
-        </HBox>
-
-        <!-- Row 6: Error label -->
-        <Label fx:id="errorLabel" textFill="red" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="4" alignment="CENTER"/>
-    </GridPane>
-
-    <Separator/>
-
-    <!-- Orders Table -->
-    <VBox>
-        <Label text="Orders List" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #1a3b8a;"/>
-        <TableView fx:id="orderTable" prefHeight="400">
-            <columns>
-                <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="priceCol" text="Order Price ($)" prefWidth="110"/>
-                <TableColumn fx:id="sourceCol" text="Source" prefWidth="120"/>
-                <TableColumn fx:id="destinationCol" text="Destination" prefWidth="120"/>
-                <TableColumn fx:id="weightCol" text="Weight (kg)" prefWidth="100"/>
-                <TableColumn fx:id="deliveryTypeCol" text="Type of Delivery" prefWidth="130"/>
-                <TableColumn fx:id="orderDateCol" text="Order Date" prefWidth="120"/>
-                <TableColumn fx:id="estimatedArrivalCol" text="Estimated Arrival" prefWidth="130"/>
-            </columns>
-        </TableView>
-    </VBox>
-</VBox>
+</HBox>

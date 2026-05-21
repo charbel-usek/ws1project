@@ -71,7 +71,12 @@ public class ProductsController {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose Product Image");
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-        File file = chooser.showOpenDialog(null);
+        try {
+            var imgDir = getClass().getResource("/com/example/mini_project2/images/");
+            if (imgDir != null) chooser.setInitialDirectory(new File(imgDir.toURI()));
+        } catch (Exception ignored) {}
+        Stage stage = (Stage) imageView.getScene().getWindow();
+        File file = chooser.showOpenDialog(stage);
         if (file != null) {
             selectedImagePath = file.getAbsolutePath();
             imageView.setImage(new Image("file:" + selectedImagePath));

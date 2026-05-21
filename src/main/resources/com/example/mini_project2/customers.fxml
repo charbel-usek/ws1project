@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -10,122 +10,132 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="603.0" prefWidth="800.0" style="-fx-background-color: #D32F2F;"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.mini_project2.controllers.CustomersController">
+<HBox spacing="30.0" stylesheets="@styles.css"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.mini_project2.controllers.CustomersController">
 
-    <Label fx:id="errorMsg" layoutX="433.0" layoutY="240.0" prefHeight="55.0" prefWidth="347.0" wrapText="true" />
+    <children>
 
-    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.2" layoutY="-4.8"
-           prefHeight="55.0" prefWidth="781.0"
-           text="Customer Management" textFill="#1d4e89"
-           AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="-5.0">
-        <font>
-            <Font name="System Bold" size="39.0" />
-        </font>
-    </Label>
+        <!-- Left form panel -->
+        <VBox prefHeight="572.0" prefWidth="306.0" spacing="10.0" styleClass="left-panel">
+            <children>
 
-    <GridPane hgap="10" layoutX="20" layoutY="71.0" prefHeight="250.0" prefWidth="382.0" vgap="10">
-        <Label text="Customer Name:" textFill="WHITE" GridPane.rowIndex="0">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <TextField fx:id="nameFld" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <Label text="Customers" styleClass="page-title" />
 
-        <Label text="age:" textFill="WHITE" GridPane.rowIndex="2">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <TextField fx:id="ageFld" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/office-man.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets left="60.0" />
+                    </VBox.margin>
+                </ImageView>
 
-        <Label text="address:" textFill="WHITE" GridPane.rowIndex="4">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <TextField fx:id="addressFld" prefHeight="24.0" prefWidth="194.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <GridPane hgap="8.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="130.0" />
+                        <ColumnConstraints prefWidth="210.0" />
+                    </columnConstraints>
 
-        <Label text="Status:" textFill="WHITE" GridPane.rowIndex="5">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <HBox prefHeight="22.0" prefWidth="192.0" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="5">
-            <RadioButton fx:id="c1" text="single" />
-            <RadioButton fx:id="c2" text="married" />
-            <RadioButton fx:id="c3" text="divorced" />
-        </HBox>
+                    <children>
 
-        <Label text="Date of Birth:" textFill="WHITE" GridPane.rowIndex="6">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <DatePicker fx:id="dateOfBirthPicker" prefHeight="24.0" prefWidth="194.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <Label text="Name:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="nameFld" promptText="Customer Name" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Label text="Phone Number:" textFill="WHITE" GridPane.rowIndex="8">
-            <font>
-                <Font name="Arial Bold" size="15.0" />
-            </font>
-        </Label>
-        <TextField fx:id="phoneNumberFld" prefHeight="24.0" prefWidth="194.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <Label text="Age:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="ageFld" promptText="Age" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-        </rowConstraints>
-    </GridPane>
+                        <Label text="Address:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="addressFld" promptText="Address" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-    <TableView fx:id="personsTable" layoutY="380.0" prefHeight="224.0" prefWidth="811.0">
-        <columns>
-            <TableColumn fx:id="nameCol" prefWidth="135.0" text="Customer Name" />
-            <TableColumn fx:id="ageCol" prefWidth="85.0" text="Age" />
-            <TableColumn fx:id="addressCol" prefWidth="150.0" text="Address" />
-            <TableColumn fx:id="dateOfBirthCol" prefWidth="120.0" text="Date of Birth" />
-            <TableColumn fx:id="phoneNumberCol" prefWidth="120.0" text="Phone Number" />
-            <TableColumn fx:id="statusCol" prefWidth="100.0" text="Status" />
-        </columns>
-    </TableView>
+                        <Label text="Status:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <VBox spacing="4.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <RadioButton fx:id="c1" text="single" />
+                            <RadioButton fx:id="c2" text="married" />
+                            <RadioButton fx:id="c3" text="divorced" />
+                        </VBox>
 
-    <Button fx:id="addBtn" layoutX="168.0" layoutY="330.0" onAction="#addPerson"
-            style="-fx-background-color: #1d4e89;" text="Submit" textFill="WHITE" />
-    <Button fx:id="updateBtn" layoutX="246.0" layoutY="330.0" onAction="#updatePerson"
-            style="-fx-background-color: #4CAF50;" text="Update" textFill="WHITE" />
-    <Button fx:id="deleteBtn" layoutX="323.0" layoutY="330.0" onAction="#deletePerson"
-            style="-fx-background-color: #8e0404;" text="Delete" textFill="WHITE">
-        <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-        </cursor>
-    </Button>
-    <Button layoutX="400.0" layoutY="330.0" onAction="#backToHome"
-            style="-fx-background-color: blue; -fx-text-fill: white;" text="Home" />
+                        <Label text="Date of Birth:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <DatePicker fx:id="dateOfBirthPicker" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-    <ImageView fitHeight="124.0" fitWidth="134.0" layoutX="524.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@images/office-man.png" />
-        </image>
-    </ImageView>
+                        <Label text="Phone Number:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <TextField fx:id="phoneNumberFld" promptText="Phone Number" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-</AnchorPane>
+                        <Label fx:id="errorMsg" styleClass="error-label" wrapText="true"
+                               GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+
+                    </children>
+
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+
+                <HBox spacing="15.0" styleClass="btn-bar">
+                    <children>
+                        <Button fx:id="addBtn" onAction="#addPerson" prefWidth="80.0" styleClass="btn-insert" text="Insert" />
+                        <Button fx:id="updateBtn" onAction="#updatePerson" prefWidth="80.0" styleClass="btn-update" text="Update" />
+                        <Button fx:id="deleteBtn" onAction="#deletePerson" prefWidth="80.0" styleClass="btn-delete" text="Delete" />
+                        <Button onAction="#backToHome" prefWidth="80.0" styleClass="btn-home" text="Home" />
+                    </children>
+                    <padding>
+                        <Insets bottom="0.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+
+            </children>
+
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+
+        <!-- Right table panel -->
+        <VBox prefWidth="700.0" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox prefWidth="700.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <TableView fx:id="personsTable" maxWidth="705.0" minWidth="705.0" prefHeight="500.0" prefWidth="705.0" styleClass="entity-table">
+                            <columns>
+                                <TableColumn fx:id="nameCol" prefWidth="135.0" text="Customer Name" />
+                                <TableColumn fx:id="ageCol" prefWidth="85.0" text="Age" />
+                                <TableColumn fx:id="addressCol" prefWidth="150.0" text="Address" />
+                                <TableColumn fx:id="dateOfBirthCol" prefWidth="120.0" text="Date of Birth" />
+                                <TableColumn fx:id="phoneNumberCol" prefWidth="120.0" text="Phone Number" />
+                                <TableColumn fx:id="statusCol" prefWidth="100.0" text="Status" />
+                            </columns>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="0.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="0.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+
+    </children>
+
+    <padding>
+        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+    </padding>
+</HBox>
