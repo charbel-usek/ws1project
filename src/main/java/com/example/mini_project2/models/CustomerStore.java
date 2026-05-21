@@ -12,11 +12,11 @@ public class CustomerStore {
     public CustomerStore() {
         customers.addAll(
                 new Customer(
-                        "Louis",
-                        21,
+                        "raphael",
+                        27,
                         "usek",
-                        "single",
-                        LocalDate.of(2003, 1, 1),
+                        "married",
+                        LocalDate.of(1998, 1, 1),
                         "03-123456"
                 )
         );
