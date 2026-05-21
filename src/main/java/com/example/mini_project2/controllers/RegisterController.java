@@ -1,6 +1,7 @@
 package com.example.mini_project2.controllers;
 
 import com.example.mini_project2.db.AccountStore;
+import com.example.mini_project2.util.HashUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -48,7 +49,7 @@ public class RegisterController {
             return;
         }
 
-        boolean ok = accountStore.registerUser(u, p);
+        boolean ok = accountStore.registerUser(u, HashUtil.sha256(p));
         if (ok) {
             msgLabel.setStyle("-fx-text-fill: green;");
             msgLabel.setText("Registered! Returning to login...");

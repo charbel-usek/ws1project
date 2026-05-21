@@ -1,5 +1,7 @@
 package com.example.mini_project2.db;
 
+import com.example.mini_project2.util.HashUtil;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +15,7 @@ public class AccountStore {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, HashUtil.sha256(password));
 
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next(); // user found

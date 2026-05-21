@@ -12,40 +12,40 @@ public class EmployeeStore {
     public EmployeeStore() {
         this.employees.addAll(
                 new Employee(
-                        "Tony",
-                        "Daou",
-                        "tony.n.daou@net.edu.lb",
-                        LocalDate.of(2024, 3, 10),
+                        "charbel",
+                        "El Khoury",
+                        "charbelelkhoury@net.edu.lb",
+                        LocalDate.of(2025, 7, 20),
                         "Team Leader",
                         "Computer Science",
                         3200
                 ),
                 new Employee(
-                        "Joe",
-                        "Fakhry",
-                        "joe.fakhry@net.usek.edu.lb",
+                        "joseph",
+                        "saad",
+                        "josephsaad@net.usek.edu.lb",
                         LocalDate.of(2023, 11, 2),
                         "Collaborator",
                         "IT",
                         1800
                 ),
                 new Employee(
-                        "Louis",
-                        "Tawk",
-                        "louis.louis@net.usek.edu.lb",
+                        "mark",
+                        "haddad",
+                        "markhaddad@net.usek.edu.lb",
                         LocalDate.of(2022, 7, 1),
                         "Collaborator",
                         "Computer Science",
                         2500
                 ),
                 new Employee(
-                        "Ali",
-                        "Rachini",
-                        "ali.rachini@net.usek.edu.lb",
+                        "raphael",
+                        "raph",
+                        "raphael@net.usek.edu.lb",
                         LocalDate.of(2018, 7, 1),
-                        "Instructor",
+                        "Collaborator",
                         "Computer Science",
-                        4500
+                        2000
                 )
         );
     }
